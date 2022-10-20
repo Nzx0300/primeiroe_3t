@@ -34,8 +34,24 @@ function calcula(){
     let val = document.getElementById("valor").value;
     let j = document.getElementById("juros").value;
     let t = document.getElementById("meses").value;
+    if(!Number(val)){
+        alert("O valor deve ser um nùmero")
+        document.getElementById("valor").value = "";
+        document.getElementById("valor").focus();
+        return 
+    }
+    if(!Number(t)){
+        alert("A quantidade de meses deve ser um nùmero")
+        document.getElementById("meses").value = "";
+        document.getElementById("meses").focus();
+        return 
+    }
 
-    let res = val * (1+(j/100));
-    
-    document.write("Resultado: "+res);
+    let res = val;
+    for(let m=1; m <= t;m++){
+        let res = val * (1+(j/100));
+        val = res;
+        document.write("Mês " + m + " = " + res + "<br>");
+    }
+     document.write("Resultado: "+res);
 }
